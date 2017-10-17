@@ -50,3 +50,11 @@ Route::group(['middleware'=> 'auth'],function(){
   Route::get('restaurant/{id}/delete','\App\Http\Controllers\RestaurantController@destroy');
   Route::get('restaurant/{id}/deleteMsg','\App\Http\Controllers\RestaurantController@DeleteMsg');
 });
+
+//menu_item Routes
+Route::group(['middleware'=> 'web'],function(){
+  Route::resource('menu_item','\App\Http\Controllers\Menu_itemController');
+  Route::post('menu_item/{id}/update','\App\Http\Controllers\Menu_itemController@update');
+  Route::get('menu_item/{id}/delete','\App\Http\Controllers\Menu_itemController@destroy');
+  Route::get('menu_item/{id}/deleteMsg','\App\Http\Controllers\Menu_itemController@DeleteMsg');
+});
