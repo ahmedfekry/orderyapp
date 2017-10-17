@@ -18,44 +18,8 @@ class OrderController extends Controller
     public function index()
     {
         $title = 'Index - order';
-        $orders = Order::paginate(6);
+        $orders = Order::all();
         return view('order.index',compact('orders','title'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return  \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $title = 'Create - order';
-        
-        return view('order.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param    \Illuminate\Http\Request  $request
-     * @return  \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(),[
-                        "address" => "required",
-                        "phone_number" => "required",
-                        "total_price" => "required",
-                        "comments" => "required"
-                    ]);
-        
-        if ($validator->fails()) {
-            return response()->json($validator->errors()->all(), 500);
-        }
-
-        $order = Order::create($request->all());
-        $request->session()->flash('success', 'Created Successfully');
-        return redirect('order');
     }
 
     /**
@@ -69,46 +33,7 @@ class OrderController extends Controller
     {
         $title = 'Show - order';
         $order = Order::findOrfail($id);
-        return view('order.show',compact('title','order'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param    \Illuminate\Http\Request  $request
-     * @param    int  $id
-     * @return  \Illuminate\Http\Response
-     */
-    public function edit($id,Request $request)
-    {
-        $title = 'Edit - order';
-        $order = Order::findOrfail($id);
-        return view('order.edit',compact('title','order'  ));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param    \Illuminate\Http\Request  $request
-     * @param    int  $id
-     * @return  \Illuminate\Http\Response
-     */
-    public function update($id,Request $request)
-    {
-        $validator = Validator::make($request->all(),[
-                        "address" => "required",
-                        "phone_number" => "required",
-                        "total_price" => "required",
-                        "comments" => "required"
-                    ]);
-        
-        if ($validator->fails()) {
-            return response()->json($validator->errors()->all(), 500);
-        }
-
-
-        $order = Order::findOrfail($id);
-        $request->session()->flash('success', 'Updated Successfully');
-        return redirect('order');
+        return view('order.view',compact('title','order'));
     }
 
     /**

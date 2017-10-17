@@ -172,7 +172,7 @@
         <ul class="nav nav-list">
             <li id="restaurant">
                 <a href="#" class="dropdown-toggle">
-                    <i class="glyphicon glyphicon-user"></i>
+                    <i class="glyphicon glyphicon-leaf"></i>
                     <span>Restaurants</span>
                     <b class="arrow fa fa-angle-right"></b>
                 </a>
@@ -185,7 +185,7 @@
                 <!-- END Submenu -->
             </li>
         </ul>
-         <ul class="nav nav-list">
+        <ul class="nav nav-list">
             <li id="menu_item">
                 <a href="#" class="dropdown-toggle">
                     <i class="glyphicon glyphicon-user"></i>
@@ -197,6 +197,21 @@
                 <ul class="submenu">
                     <li id="menu_item-create"><a href="{{url('menu_item/create')}}">Add Menu Item</a></li>
                     <li id="menu_item-index"><a href="{{url('menu_item')}}">Menu Item</a></li>
+                </ul>
+                <!-- END Submenu -->
+            </li>
+        </ul>
+        <ul class="nav nav-list">
+            <li id="order">
+                <a href="#" class="dropdown-toggle">
+                    <i class="glyphicon glyphicon-check"></i>
+                    <span>Orders</span>
+                    <b class="arrow fa fa-angle-right"></b>
+                </a>
+
+                <!-- BEGIN Submenu -->
+                <ul class="submenu">
+                    <li id="order-index"><a href="{{url('order')}}">Orders</a></li>
                 </ul>
                 <!-- END Submenu -->
             </li>
