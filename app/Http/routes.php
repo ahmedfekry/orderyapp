@@ -52,9 +52,18 @@ Route::group(['middleware'=> 'auth'],function(){
 });
 
 //menu_item Routes
-Route::group(['middleware'=> 'web'],function(){
+Route::group(['middleware'=> 'Auth'],function(){
   Route::resource('menu_item','\App\Http\Controllers\Menu_itemController');
   Route::post('menu_item/{id}/update','\App\Http\Controllers\Menu_itemController@update');
   Route::get('menu_item/{id}/delete','\App\Http\Controllers\Menu_itemController@destroy');
   Route::get('menu_item/{id}/deleteMsg','\App\Http\Controllers\Menu_itemController@DeleteMsg');
+});
+
+
+//order Routes
+Route::group(['middleware'=> 'Auth'],function(){
+  Route::resource('order','\App\Http\Controllers\OrderController');
+  Route::post('order/{id}/update','\App\Http\Controllers\OrderController@update');
+  Route::get('order/{id}/delete','\App\Http\Controllers\OrderController@destroy');
+  Route::get('order/{id}/deleteMsg','\App\Http\Controllers\OrderController@DeleteMsg');
 });
