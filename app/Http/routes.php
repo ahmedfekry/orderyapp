@@ -42,3 +42,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('users/new', 'UserController@create');
     Route::post('users', 'UserController@store');
 });
+
+//restaurant Routes
+Route::group(['middleware'=> 'auth'],function(){
+  Route::resource('restaurant','\App\Http\Controllers\RestaurantController');
+  Route::post('restaurant/{id}/update','\App\Http\Controllers\RestaurantController@update');
+  Route::get('restaurant/{id}/delete','\App\Http\Controllers\RestaurantController@destroy');
+  Route::get('restaurant/{id}/deleteMsg','\App\Http\Controllers\RestaurantController@DeleteMsg');
+});
