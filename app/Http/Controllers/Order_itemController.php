@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Order_item;
 use App\Menu_item;
 use App\Order;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class Order_itemController extends Controller

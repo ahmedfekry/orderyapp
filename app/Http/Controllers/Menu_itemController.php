@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Menu_item;
 use App\Restaurant;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class Menu_itemController extends Controller

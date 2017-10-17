@@ -169,6 +169,22 @@
                 <!-- END Submenu -->
             </li>
         </ul>
+        <ul class="nav nav-list">
+            <li id="restaurant">
+                <a href="#" class="dropdown-toggle">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span>Restaurants</span>
+                    <b class="arrow fa fa-angle-right"></b>
+                </a>
+
+                <!-- BEGIN Submenu -->
+                <ul class="submenu">
+                    <li id="restaurant-create"><a href="{{url('restaurant/create')}}">Add Restaurant</a></li>
+                    <li id="restaurant-index"><a href="{{url('restaurant')}}">Restaurants</a></li>
+                </ul>
+                <!-- END Submenu -->
+            </li>
+        </ul>
         <!-- END Navlist -->
 
         <!-- BEGIN Sidebar Collapse Button -->
