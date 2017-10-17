@@ -68,3 +68,16 @@ Route::group(['middleware'=> 'auth'],function(){
   Route::resource('order_item','\App\Http\Controllers\Order_itemController');
   Route::get('order_item/{id}/delete','\App\Http\Controllers\Order_itemController@destroy');
 });
+
+// Api Routes
+Route::group(['prefix' => 'api/v1'], function() {
+    Route::get('restaurants','Api\v1\ApiController@getRestaurants');
+    Route::get('restaurants/{id}','Api\v1\ApiController@getRestaurant');
+    Route::get('cart/view','Api\v1\ApiController@viewCart');
+    Route::post('cart/add','Api\v1\ApiController@addItemToTheCart');
+    Route::post('cart/add_area','Api\v1\ApiController@addArea');
+    Route::post('cart/update','Api\v1\ApiController@updateQuantity');
+    Route::delete('cart/remove/{rowId}','Api\v1\ApiController@removeItem');
+    Route::delete('cart/destroy','Api\v1\ApiController@destryCart');
+    Route::post('cart/place_order','Api\v1\ApiController@placeOrder');
+});

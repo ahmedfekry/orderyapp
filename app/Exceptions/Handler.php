@@ -46,6 +46,9 @@ class Handler extends ExceptionHandler
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
+        if (strpos($e->getMessage(), 'rowId') ) {
+             return response()->json([$e->getMessage()], 500);
+        }
         return parent::render($request, $e);
     }
 }
