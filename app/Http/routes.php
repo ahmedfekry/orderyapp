@@ -49,7 +49,7 @@ Route::group(['middleware'=> 'auth'],function(){
 });
 
 //menu_item Routes
-Route::group(['middleware'=> 'Auth'],function(){
+Route::group(['middleware'=> 'auth'],function(){
   Route::resource('menu_item','\App\Http\Controllers\Menu_itemController');
   Route::post('menu_item/{id}/update','\App\Http\Controllers\Menu_itemController@update');
   Route::get('menu_item/{id}/delete','\App\Http\Controllers\Menu_itemController@destroy');
@@ -58,7 +58,7 @@ Route::group(['middleware'=> 'Auth'],function(){
 
 
 //order Routes
-Route::group(['middleware'=> 'Auth'],function(){
+Route::group(['middleware'=> 'auth'],function(){
   Route::resource('order','\App\Http\Controllers\OrderController');
   Route::post('order/{id}/update','\App\Http\Controllers\OrderController@update');
   Route::get('order/{id}/delete','\App\Http\Controllers\OrderController@destroy');
@@ -67,7 +67,7 @@ Route::group(['middleware'=> 'Auth'],function(){
 
 
 //order_item Routes
-Route::group(['middleware'=> 'Auth'],function(){
+Route::group(['middleware'=> 'auth'],function(){
   Route::resource('order_item','\App\Http\Controllers\Order_itemController');
   Route::post('order_item/{id}/update','\App\Http\Controllers\Order_itemController@update');
   Route::get('order_item/{id}/delete','\App\Http\Controllers\Order_itemController@destroy');

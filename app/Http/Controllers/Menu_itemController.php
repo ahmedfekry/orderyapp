@@ -20,7 +20,7 @@ class Menu_itemController extends Controller
     public function index()
     {
         $title = 'Index - menu_item';
-        $menu_items = Menu_item::paginate(6);
+        $menu_items = Menu_item::all();
         return view('menu_item.index',compact('menu_items','title'));
     }
 
@@ -59,6 +59,21 @@ class Menu_itemController extends Controller
         }
 
         $menu_item = Menu_item::create($request->all());
+
+        $imgExtensions = array("png","jpeg","jpg");
+        $file = $request->file('image_path') ;
+        $destinationFolder = "uploads/menu_items/" ;
+        $uniqueNumber = time() ;
+        if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
+        {
+            \Session::flash('failed','Image must be jpg, png, or jpeg only !!try again with that extensions please..');
+            return back();
+        }
+        $menu_item->image_path = $destinationFolder.$uniqueNumber.".".$file->getClientOriginalExtension() ;
+
+        $file->move( $destinationFolder ,$uniqueNumber.".".$file->getClientOriginalExtension() ) ;
+        $menu_item->save();        
+
         $request->session()->flash('success', 'Create successfuly');
         return redirect('menu_item');
     }
@@ -88,7 +103,7 @@ class Menu_itemController extends Controller
         $title = 'Edit - menu_item';
         $restaurants = Restaurant::all()->pluck('title','id');
         $menu_item = Menu_item::findOrfail($id);
-        return view('menu_item.edit',compact('title','menu_item' ,'restaurants' ) );
+        return view('menu_item.create',compact('title','menu_item' ,'restaurants' ) );
     }
 
     /**
@@ -114,6 +129,23 @@ class Menu_itemController extends Controller
 
         $menu_item = Menu_item::findOrfail($id);
     	$menu_item->update($request->all());
+        if ($request->hasFile('image_path')) {
+            \File::delete($menu_item->image_path);
+            $imgExtensions = array("png","jpeg","jpg");
+            $file = $request->file('image_path') ;
+            $destinationFolder = "uploads/menu_items/" ;
+            $uniqueNumber = time() ;
+            if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
+            {
+                \Session::flash('failed','Image must be jpg, png, or jpeg only !!try again with that extensions please..');
+                return back();
+            }
+            $menu_item->image_path = $destinationFolder.$uniqueNumber.".".$file->getClientOriginalExtension() ;
+
+            $file->move( $destinationFolder ,$uniqueNumber.".".$file->getClientOriginalExtension() ) ;
+            $menu_item->save();        
+        }
+
         $request->session()->flash('success', 'Updated successfuly');
         return redirect('menu_item');
     }
@@ -141,10 +173,11 @@ class Menu_itemController extends Controller
      * @param    int $id
      * @return  \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
      	$menu_item = Menu_item::findOrfail($id);
      	$menu_item->delete();
-        return URL::to('menu_item');
+        $request->session()->flash('success', 'Deleted successfuly');
+        return redirect('menu_item');
     }
 }

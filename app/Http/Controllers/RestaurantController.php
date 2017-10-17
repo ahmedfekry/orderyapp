@@ -54,9 +54,9 @@ class RestaurantController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $imgExtensions = array("png","jpeg","jpg");
         $restaurant = Restaurant::create($request->all());
 
+        $imgExtensions = array("png","jpeg","jpg");
         $file = $request->file('image_path') ;
         $destinationFolder = "uploads/restaurants/" ;
         $uniqueNumber = time() ;
