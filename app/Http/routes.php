@@ -67,3 +67,12 @@ Route::group(['middleware'=> 'Auth'],function(){
   Route::get('order/{id}/delete','\App\Http\Controllers\OrderController@destroy');
   Route::get('order/{id}/deleteMsg','\App\Http\Controllers\OrderController@DeleteMsg');
 });
+
+
+//order_item Routes
+Route::group(['middleware'=> 'Auth'],function(){
+  Route::resource('order_item','\App\Http\Controllers\Order_itemController');
+  Route::post('order_item/{id}/update','\App\Http\Controllers\Order_itemController@update');
+  Route::get('order_item/{id}/delete','\App\Http\Controllers\Order_itemController@destroy');
+  Route::get('order_item/{id}/deleteMsg','\App\Http\Controllers\Order_itemController@DeleteMsg');
+});
