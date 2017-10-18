@@ -1,3 +1,7 @@
+### What is orderyapp ?
+
+It is a website like Otlb.com where users can order food. it hase a dashboard where admins can manage the app content
+
 ### configration
 
 1- Clone the rep
