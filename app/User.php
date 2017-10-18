@@ -10,6 +10,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -23,6 +24,7 @@ class User extends Model implements AuthenticatableContract,
      * @var string
      */
     protected $table = 'users';
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.

@@ -31,6 +31,15 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/', 'DashboardController@index');
 });
 
+Route::group(['middleware' => ['auth','role:super_admin']], function() {
+    Route::get('roles', 'RoleController@index');
+    Route::get('roles/new', 'RoleController@create');
+    Route::post('roles', 'RoleController@store');
+    Route::get('roles/{id}/delete', 'RoleController@destroy');
+    Route::get('roles/{id}/edit', 'RoleController@edit');
+    Route::post('roles/{id}/update', 'RoleController@update');
+});
+
 Route::group(['middleware' => 'auth'], function() {
     Route::get('users', 'UserController@index');
     Route::get('users/{id}/delete', 'UserController@destroy');

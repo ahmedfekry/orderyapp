@@ -22,24 +22,24 @@
 								<th style="width:18px"><input type="checkbox"></th>
 								<th>Name<div></div><div></div></th>
 								<th>Email</th>
+								<th>Role</th>
 								<th class="visible-md visible-lg" style="width:130px">Action</th>
 							</tr>
 							</thead>
 							<tbody>
 							@foreach($users as $user)
-								@if($user->email!=\Auth::user()->email)
-									<tr class="table-flag-blue">
-										<td><input type="checkbox"></td>
-										<td>{{$user->name}}</td>
-										<td>{{$user->email}}</td>
-										<td class="visible-md visible-lg">
-											<div class="btn-group">
-												<a class="btn btn-sm show-tooltip" title="" href="{{url('users/'.$user->id.'/edit')}}" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-												<a class="btn btn-sm btn-danger show-tooltip" title="" onclick="return confirm('Are you sure you want to delete this ?');" href="{{url('users/'.$user->id.'/delete')}}" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
-											</div>
-										</td>
-									</tr>
-								@endif
+								<tr class="table-flag-blue">
+									<td><input type="checkbox"></td>
+									<td>{{$user->name}}</td>
+									<td>{{$user->email}}</td>
+									<td>{{$user->roles->first()->name}}</td>
+									<td class="visible-md visible-lg">
+										<div class="btn-group">
+											<a class="btn btn-sm show-tooltip" title="" href="{{url('users/'.$user->id.'/edit')}}" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+											<a class="btn btn-sm btn-danger show-tooltip" title="" onclick="return confirm('Are you sure you want to delete this ?');" href="{{url('users/'.$user->id.'/delete')}}" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</td>
+								</tr>
 							@endforeach
 							</tbody>
 						</table>

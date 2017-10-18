@@ -43,6 +43,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
 
         $user->save();
+        $user->assignRole('super_admin');
         $request->session()->flash('success','User created successfully');
         return redirect('users');
     }

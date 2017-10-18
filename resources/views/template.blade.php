@@ -170,6 +170,22 @@
             </li>
         </ul>
         <ul class="nav nav-list">
+            <li id="role">
+                <a href="#" class="dropdown-toggle">
+                    <i class="glyphicon glyphicon-road"></i>
+                    <span>Roles</span>
+                    <b class="arrow fa fa-angle-right"></b>
+                </a>
+
+                <!-- BEGIN Submenu -->
+                <ul class="submenu">
+                    <li id="role-create"><a href="{{url('roles/new')}}">Create Role</a></li>
+                    <li id="role-index"><a href="{{url('roles')}}">Roles</a></li>
+                </ul>
+                <!-- END Submenu -->
+            </li>
+        </ul>
+        <ul class="nav nav-list">
             <li id="restaurant">
                 <a href="#" class="dropdown-toggle">
                     <i class="glyphicon glyphicon-leaf"></i>
