@@ -84,7 +84,7 @@ class RestaurantController extends Controller
     {
         $title = 'Show - restaurant';
         $restaurant = Restaurant::findOrfail($id);
-        return view('restaurant.show',compact('title','restaurant'));
+        return view('restaurant.view',compact('title','restaurant'));
     }
 
     /**
