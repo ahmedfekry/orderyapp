@@ -21,3 +21,5 @@
 
 ### API Documentation
 [API Documetation](https://documenter.getpostman.com/collection/view/1994153-2c2e1e6f-2222-389f-700c-d87aad8bdf60)
+
+The APIs uses the [JWT Auth](https://github.com/tymondesigns/jwt-auth/) blugin to authenticate every request, the token must exist in all the api http:://xxxx.com?token=sdfsd123wd .
