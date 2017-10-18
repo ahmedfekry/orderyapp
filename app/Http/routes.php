@@ -79,7 +79,7 @@ Route::group(['middleware'=> 'auth'],function(){
 });
 
 // Api Routes
-Route::group(['prefix' => 'api/v1'], function() {
+Route::group(['prefix' => 'api/v1','middleware'=>'jwt.auth'], function() {
     Route::get('restaurants','Api\v1\ApiController@getRestaurants');
     Route::get('restaurants/{id}','Api\v1\ApiController@getRestaurant');
     Route::get('cart/view','Api\v1\ApiController@viewCart');
@@ -88,5 +88,12 @@ Route::group(['prefix' => 'api/v1'], function() {
     Route::post('cart/update','Api\v1\ApiController@updateQuantity');
     Route::delete('cart/remove/{rowId}','Api\v1\ApiController@removeItem');
     Route::delete('cart/destroy','Api\v1\ApiController@destryCart');
-    Route::post('cart/place_order','Api\v1\ApiController@placeOrder');
+    Route::post('cart/place_order','Api\v1\ApiController@placeOrder'); 
+});
+Route::group(['prefix' => 'api/v1'], function() {
+  Route::post('login', 'Api\AuthenticateController@login');
+  Route::post('signup', 'Api\AuthenticateController@sign_up');
+  Route::get('refresh_token', 'Api\AuthenticateController@refresh_token');
+  Route::post('logout', 'Api\AuthenticateController@logout');
+  Route::get('verification/{confirmation_code}', 'Api\AuthenticateController@confirm');
 });

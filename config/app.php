@@ -146,6 +146,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
+
     ],
 
     /*
@@ -196,7 +198,9 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
 
-    ],
+    ],  
 
 ];
